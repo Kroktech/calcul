@@ -57,19 +57,19 @@ frac operator /(const frac& f, const frac& f2)
     return tmp;
 
 }
-frac operator ^( frac& f, int puissance)
+frac operator ^(frac& f,unsigned int puissance)
 {
-    for (int i = 1; i < puissance; ++i)
+    int resultn = 1;
+    int resultd = 1;
+    for (int i = 0; i < puissance; ++i)
     {
-        f.numerator = f.numerator * f.numerator;
+        resultn *= f.numerator;
+        resultd *= f.denominator;
     }
-    for (int i = 1; i < puissance; ++i)
-    {
-        f.denominator = f.denominator * f.denominator;
-    }
+   
     frac tmp
     {
-    f.numerator ,f.denominator
+        resultn , resultd
     };
     return tmp;
 }
@@ -88,6 +88,6 @@ int main()
     std::cout << std::endl;
     std::cout << f1 / f2;
     std::cout << std::endl;
-    std::cout << ((f1) ^ 2) << std::endl;
+    std::cout << ((f1) ^ 3) << std::endl;
     return 0;
 }
